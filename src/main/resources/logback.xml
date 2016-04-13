@@ -1,0 +1,24 @@
+<configuration>
+  <property name="LOG_FILE" value="/var/log/userprofile/spring.log"/>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %X{correlation_id:-empty} %X{user_id:-nouser} %X{backend_process:-unknow} %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+    <logger name="org.apache.catalina.startup.DigesterFactory" level="ERROR"/>
+    <logger name="org.apache.catalina.util.LifecycleBase" level="ERROR"/>
+    <logger name="org.apache.coyote.http11.Http11NioProtocol" level="WARN"/>
+    <logger name="org.apache.sshd.common.util.SecurityUtils" level="WARN"/>
+    <logger name="org.apache.tomcat.util.net.NioSelectorPool" level="WARN"/>
+    <logger name="org.crsh.plugin" level="WARN"/>
+    <logger name="org.crsh.ssh" level="WARN"/>
+    <logger name="org.eclipse.jetty.util.component.AbstractLifeCycle" level="ERROR"/>
+    <logger name="org.hibernate.SQL" level="DEBUG"/>
+    <logger name="org.hibernate.stat" level="INFO"/>
+    <logger name="org.hibernate.engine.internal.StatisticalLoggingSessionEventListener" level="INFO"/>
+    <logger name="org.hibernate.validator.internal.util.Version" level="WARN"/>
+</configuration>
