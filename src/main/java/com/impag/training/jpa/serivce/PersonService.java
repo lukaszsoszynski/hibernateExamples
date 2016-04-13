@@ -1,4 +1,4 @@
-package com.impag.training.jpa;
+package com.impag.training.jpa.serivce;
 
 import com.impag.training.jpa.model.Person;
 import com.impag.training.jpa.repository.PersonRepository;
