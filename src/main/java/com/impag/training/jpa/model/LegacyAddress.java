@@ -2,21 +2,17 @@ package com.impag.training.jpa.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Embeddable;
 
-@Entity
-@Getter
+@Embeddable
+@Data
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
-public class Address {
-
-    @Id
-    @GeneratedValue
-    private Long id;
+@AllArgsConstructor
+public class LegacyAddress {
 
     private String street;
 
@@ -25,8 +21,4 @@ public class Address {
     private String zip;
 
     private String country;
-
-    @OneToOne(mappedBy = "address")
-    @Basic(optional = false)
-    private Employee employee;
 }

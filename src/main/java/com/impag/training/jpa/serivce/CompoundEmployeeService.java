@@ -1,6 +1,6 @@
 package com.impag.training.jpa.serivce;
 
-import com.impag.training.jpa.model.Address;
+import com.impag.training.jpa.model.LegacyAddress;
 import com.impag.training.jpa.model.Employee;
 import com.impag.training.jpa.model.Name;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,24 +12,24 @@ import javax.persistence.EntityManager;
 @Service
 public class CompoundEmployeeService {
 
-    private final EmployeeService employeeService;
+    private final ApplicationService applicationService;
 
     private final EntityManager entityManager;
 
     @Autowired
-    public CompoundEmployeeService(EmployeeService employeeService, EntityManager entityManager) {
-        this.employeeService = employeeService;
+    public CompoundEmployeeService(ApplicationService applicationService, EntityManager entityManager) {
+        this.applicationService = applicationService;
         this.entityManager = entityManager;
     }
 
     @Transactional
     public void loadAndSaveEmployee(){
         Name name = Name.builder().first("Łukasz").middle("Łukasz").last("Maciek").build();
-        Address address = Address.builder().city("Warszawa").country("PL").zip("123").street("Dluga").build();
-        Employee employee = employeeService.createEmployee(name, address);
+        LegacyAddress address = LegacyAddress.builder().city("Warszawa").country("PL").zip("123").street("Dluga").build();
+        Employee employee = applicationService.createEmployee(name, null);
 //        entityManager.flush();
         System.out.println("Employ saved: " + employee);
-        Employee loadedEmployee = employeeService.findEmployee(employee.getId());
+        Employee loadedEmployee = applicationService.findEmployee(employee.getId());
         System.out.println("Employee loaded: " + loadedEmployee);
     }
 }
